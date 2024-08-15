@@ -17,8 +17,8 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
-            'model' => fake()->word(),
-            'year' => '2020',
+            'model' => fake()->randomElement(['Mazda', 'Toyota', 'Ford', 'Nissan', 'VW']),
+            'year' => fake()->randomElement(range(1990, 2024)),
         ];
     }
 }
