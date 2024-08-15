@@ -1,5 +1,5 @@
 <?php
 
-test('that true is true', function () {
+test('models/brand', function () {
     expect(true)->toBeTrue();
 });
