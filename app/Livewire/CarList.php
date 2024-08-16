@@ -5,8 +5,7 @@ namespace App\Livewire;
 use App\Models\Car;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Columns\Layout\Stack;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\Layout\View;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
@@ -34,14 +33,7 @@ class CarList extends Component implements HasForms, HasTable
                 'xl' => 4,
             ])
             ->recordClasses(['!ring-0 !shadow-none'])
-            ->columns([
-                Stack::make([
-                    TextColumn::make('brand.name'),
-                    TextColumn::make('model'),
-                    TextColumn::make('year'),
-                    TextColumn::make('images'),
-                ]),
-            ]);
+            ->columns([View::make('cars.table.row-content')]);
     }
 
     public function render()
