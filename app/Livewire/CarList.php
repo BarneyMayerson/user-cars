@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Car;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -28,11 +29,18 @@ class CarList extends Component implements HasForms, HasTable
     {
         return $table
             ->query(Car::query())
+            ->contentGrid([
+                'md' => 3,
+                'xl' => 4,
+            ])
+            ->recordClasses(['!ring-0 !shadow-none'])
             ->columns([
-                TextColumn::make('brand.name'),
-                TextColumn::make('model'),
-                TextColumn::make('year'),
-                TextColumn::make('images'),
+                Stack::make([
+                    TextColumn::make('brand.name'),
+                    TextColumn::make('model'),
+                    TextColumn::make('year'),
+                    TextColumn::make('images'),
+                ]),
             ]);
     }
 
