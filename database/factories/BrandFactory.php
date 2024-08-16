@@ -17,7 +17,7 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word(),
+            'name' => fake()->randomElement(['Mazda', 'Toyota', 'Ford', 'Nissan', 'VW']),
         ];
     }
 }

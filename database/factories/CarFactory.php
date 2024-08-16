@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
-            'model' => fake()->randomElement(['Mazda', 'Toyota', 'Ford', 'Nissan', 'VW']),
+            'brand_id' => Brand::factory(),
+            'model' => fake()->word(),
             'year' => fake()->randomElement(range(1990, 2024)),
         ];
     }

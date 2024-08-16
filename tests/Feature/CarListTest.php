@@ -33,9 +33,18 @@ it('shows brand, model and year', function () {
 
     Livewire::test(CarList::class)
         ->assertOk()
-        ->assertSeeText([
-            'Mazda', 'MX-5', '2005',
-            'Nissan', 'Tiida', '2018',
-            'Ford', 'Mustang', '2012',
+        ->assertSeeText(['Mazda', 'MX-5', '2005', 'Nissan', 'Tiida', '2018', 'Ford', 'Mustang', '2012']);
+});
+
+it('shows a list of car images', function () {
+    Car::factory()
+        ->for(Brand::factory()->create(['name' => 'Mazda']))
+        ->create([
+            'model' => 'RX-7',
+            'images' => ['image1.jpg', 'image2.jpg', 'image3.jpg'],
         ]);
+
+    Livewire::test(CarList::class)
+        ->assertOk()
+        ->assertSeeText(['image1.jpg', 'image2.jpg', 'image3.jpg']);
 });
