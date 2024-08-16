@@ -8,11 +8,8 @@ use Illuminate\Database\Seeder;
 
 class CarSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Car::factory(10)->create();
+        Car::factory(25)->create();
     }
 }
